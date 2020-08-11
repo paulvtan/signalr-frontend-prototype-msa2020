@@ -18,8 +18,9 @@ function App() {
   const [hubConnection, setHubConnection] = useState<HubConnection>(connection);
 
   function handleClick() {
-    const newNumber = getRandomInt(1000);
-    hubConnection.invoke("BroadcastNumber", newNumber);
+    if (number !== undefined) {
+      hubConnection.invoke("BroadcastNumber", (number + 1));
+    }
   }
 
   function getRandomInt(max: any) {
