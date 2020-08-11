@@ -1,0 +1,16 @@
+.number-center {
+    font-size: 500px;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .button-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
