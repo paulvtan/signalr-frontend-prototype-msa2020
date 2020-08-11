@@ -9,7 +9,8 @@ import {
 import "./App.css";
 
 function App() {
-  const [number, setNumber] = useState(Math.round(Math.random() * 10));
+  const [number, setNumber] = useState();
+  const [userCount, setUserCount] = useState();
   const connection = new HubConnectionBuilder()
     .withUrl("https://signalr-backend-prototype-msa2020.azurewebsites.net/hub")
     .configureLogging(LogLevel.Information)
@@ -30,8 +31,9 @@ function App() {
       console.log(user + " " + message);
     });
 
-    hubConnection.on("ShowUserCounts", (usersCount: any) => {
-      console.log(usersCount);
+    hubConnection.on("ShowUserCounts", (newUsersCount: any) => {
+      console.log(newUsersCount);
+      setUserCount(newUsersCount);
     });
 
     hubConnection.on("UpdateNumber", (num: any) => {
@@ -45,6 +47,7 @@ function App() {
     <>
       <div>
         <NumberDisplay num={number} />
+        <h1 className="button-center">Live Users: {userCount}</h1>
         <button className="button-center" onClick={handleClick}>
           Click me!
         </button>
