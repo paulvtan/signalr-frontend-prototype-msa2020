@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   const [number, setNumber] = useState(Math.round(Math.random() * 10));
   const connection = new HubConnectionBuilder()
-    .withUrl("https://localhost:44301/hub")
+    .withUrl("https://signalr-backend-prototype-msa2020.azurewebsites.net/hub")
     .configureLogging(LogLevel.Information)
     .build();
   const [hubConnection, setHubConnection] = useState<HubConnection>(connection);
